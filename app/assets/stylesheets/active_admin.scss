@@ -15,3 +15,27 @@
 // For example, to change the default status-tag color:
 //
 //   .status_tag { background: #6090DB; }
+
+#header {
+  background-color: #19A861;
+  border-bottom: 1px solid #0f864a;
+  background-image: none;
+  border: none;
+  text-shadow: none;
+}
+
+#header h1#site_title {
+  color: white;
+}
+
+#header ul.tabs > li.current > a {
+  background: #0b8649;
+}
+
+#header ul.tabs > li > a {
+  color: white;
+}
+
+#header ul.tabs > li:hover > a {
+  background: #0d8c4d;
+}
