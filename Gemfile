@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.6'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+gem 'mysql2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -29,6 +30,9 @@ gem 'devise'
 gem 'activeadmin', github: 'activeadmin'
 # Use paperclio for add images
 gem "paperclip", "~> 4.2"
+# Load files to active admin
+gem 'active_admin_importable'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
