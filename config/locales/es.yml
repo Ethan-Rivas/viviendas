@@ -1,0 +1,53 @@
+es:
+  date:
+    formats:
+      default: "%Y/%m/%d"
+      short: "%b %d"
+      long: "%B %d, %Y"
+  time:
+    formats:
+      default: "%Y/%m/%d"
+      short: "%b %d"
+      long: "%B %d, %Y"
+  devise:
+    sessions:
+      admin_user:
+        signed_in: "Bienvenido al panel de Administración."
+    failure:
+      admin_user:
+        unauthenticated: "Debes estar conectado para ver el panel de Administración."
+        invalid: "No puede dejarse vacío; el correo y/o la contraseña no son correctos."
+        not_found_in_database: "No se encontró el usuario o los datos no coinciden."
+  errors:
+    messages:
+      not_saved: ""
+  activerecord:
+    errors:
+      messages:
+        blank: "No puede dejarse vacío."
+    models:
+      admin_user:
+        one: "Administrador"
+        other: "Administradores"
+      picture:
+        one: "Foto"
+        other: "Fotos"
+      settlement:
+        one: "Asentamiento"
+        other: "Asentamientos"
+      contract:
+        one: "Contrato"
+        other: "Contratos"
+      attributes:
+        admin_user:
+          password: "Contraseña"
+          password_confirmation: "Confirmar contraseña"
+          sign_in_count: "Número de Conexiones"
+          created_at: "Creado"
+        contract:
+          name: "Nombre"
+        picture:
+          title: "Nombre"
+          image: "Imagen"
+        settlement:
+          contract: "Contrato"
