@@ -67,6 +67,3 @@ group :production do
   # This is necessary for serving assets on production
   gem 'rails_12factor'
 end
-
-# Session management
-gem 'devise'
