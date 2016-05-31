@@ -1,3 +1,4 @@
 class ApiController < ActionController::Base
-  include DeviseTokenAut::Concerns::SetUserByToken
+  include DeviseTokenAuth::Concerns::SetUserByToken
+  protect_from_forgery with: :null_session
 end
