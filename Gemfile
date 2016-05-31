@@ -25,13 +25,15 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use for manage users
-gem 'devise'
+gem 'devise', '~> 3.2'
 # Admin panel for manage models
 gem 'activeadmin', github: 'activeadmin'
 # Use paperclio for add images
 gem "paperclip", "~> 4.2"
 # Load files to active admin
 gem 'active_admin_importable'
+# Token for manage authentications
+gem 'devise_token_auth'
 
 
 # Use ActiveModel has_secure_password
