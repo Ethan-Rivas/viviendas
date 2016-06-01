@@ -1,4 +1,5 @@
-class Api::V1::SettlementsController < ApplicationController
+class Api::V1::SettlementsController < ApiController
+  before_action :authenticate_user!
   before_filter :find_settlement, only: [:show, :update, :destroy]
 
   def index
