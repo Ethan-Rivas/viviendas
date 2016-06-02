@@ -3,7 +3,7 @@ class Api::V1::SettlementsController < ApiController
   before_filter :find_settlement, only: [:show, :update, :destroy]
 
   def index
-    settlements = Settlement.all
+    settlements = current_user.contract.settlements
 
     render json: settlements
   end
