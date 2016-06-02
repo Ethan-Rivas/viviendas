@@ -26,6 +26,9 @@ es:
       messages:
         blank: "No puede dejarse vacío."
     models:
+      user:
+        one: "Dispositivo"
+        other: "Dispositivos"
       admin_user:
         one: "Administrador"
         other: "Administradores"
@@ -39,6 +42,8 @@ es:
         one: "Contrato"
         other: "Contratos"
       attributes:
+        user:
+          contract: "Contrato"
         admin_user:
           password: "Contraseña"
           password_confirmation: "Confirmar contraseña"
