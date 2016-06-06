@@ -31,6 +31,10 @@ gem "paperclip", "~> 4.2"
 gem 'active_admin_importable'
 # Token for manage authentications
 gem 'devise_token_auth'
+# RestClient
+gem 'rest-client'
+# Awesome print
+gem 'awesome_print'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
