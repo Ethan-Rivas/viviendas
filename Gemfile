@@ -32,7 +32,6 @@ gem 'active_admin_importable'
 # Token for manage authentications
 gem 'devise_token_auth'
 
-
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -58,6 +57,9 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  # Turn off Rails assets pipeline log
+  gem 'quiet_assets'
 end
 
 group :production do

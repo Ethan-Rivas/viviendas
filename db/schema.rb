@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160531001328) do
+ActiveRecord::Schema.define(version: 20160601204646) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -90,6 +90,9 @@ ActiveRecord::Schema.define(version: 20160531001328) do
     t.text     "tokens"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "contract_id"
+    t.string   "devise_model"
+    t.string   "devise_color"
   end
 
   add_index "users", ["email"], name: "index_users_on_email"
