@@ -1,6 +1,6 @@
 class Api::V1::SettlementsController < ApiController
   before_action :authenticate_user!
-  before_filter :find_settlement, only: [:show, :update, :destroy]
+  before_filter :find_settlement, only: [:show, :update]
 
   def index
     settlements = current_user.contract.settlements
@@ -10,22 +10,6 @@ class Api::V1::SettlementsController < ApiController
 
   def show
     render json: @settlement
-  end
-
-  def create
-    settlement = Settlement.create(settlement_params)
-
-    if settlement.valid?
-      render json: settlement
-    else
-      render json: settlement.errors, status: :unprocessable_entity
-    end
-  end
-
-  def destroy
-    @settlement.destroy
-
-    render nothing: true, status: :ok
   end
 
   def update
@@ -41,7 +25,10 @@ class Api::V1::SettlementsController < ApiController
   private
   def settlement_params
     params.require(:settlement).permit([
-      :uso, :dos, :tres, :contract_id
+      :owner_name, :address, :geo_x, :geo_y,
+      :contract_id, :check_1, :check_2, :check_3,
+      :check_4, :check_5, :check_6, :check_7,
+      :check_8, :check_9, :check_10
     ]) if params[:settlement].present?
   end
 
