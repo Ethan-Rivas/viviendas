@@ -13,16 +13,7 @@ ActiveAdmin.register Settlement do
     column :address
     column :geo_x
     column :geo_y
-    column :check_1
-    column :check_2
-    column :check_3
-    column :check_4
-    column :check_5
-    column :check_6
-    column :check_7
-    column :check_8
-    column :check_9
-    column :check_10
+    column :progress
     column :contract
     actions
   end
