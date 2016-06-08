@@ -25,8 +25,7 @@ class Api::V1::SettlementsController < ApiController
   private
   def settlement_params
     params.require(:settlement).permit([
-      :owner_name, :address, :geo_x, :geo_y,
-      :contract_id, :check_1, :check_2, :check_3,
+      :check_1, :check_2, :check_3,
       :check_4, :check_5, :check_6, :check_7,
       :check_8, :check_9, :check_10
     ]) if params[:settlement].present?

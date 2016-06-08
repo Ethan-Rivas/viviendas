@@ -1,6 +1,14 @@
 class Settlement < ActiveRecord::Base
+  has_many :pictures
   belongs_to :contract
+
   def contract_name=(name)
     self.contract_id = Contract.find_or_create_by({name: name}).id
+  end
+
+  def progress
+    (1..10).select do |i|
+      attributes["check_#{i}"]
+    end.count
   end
 end
