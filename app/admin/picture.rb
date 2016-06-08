@@ -1,9 +1,10 @@
 ActiveAdmin.register Picture do
-  permit_params :image, :title
-  
+  permit_params :settlement, :image, :title
+
   index do
     selectable_column
     id_column
+    column :settlement
     column :title
     column('Imagen') do |picture|
       link_to(picture.image_file_name, picture.image.url(:medium), {
