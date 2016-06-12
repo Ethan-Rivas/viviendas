@@ -18,7 +18,9 @@ ActiveAdmin.register Settlement do
     column :apellido_paterno
     column :curp
     column :telefono
-    column :fecha_nacimiento
+    column(:fecha_nacimiento) do |settlement|
+      settlement.fecha_nacimiento.try(:strftime, '%d/%m/%Y')
+    end
     column :cp
     column :colonia
     column :localidad
