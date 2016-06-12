@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160609224449) do
+ActiveRecord::Schema.define(version: 20160612190210) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -83,9 +83,9 @@ ActiveRecord::Schema.define(version: 20160609224449) do
     t.string  "apellido_paterno"
     t.string  "apellido_materno"
     t.string  "curp"
-    t.integer "telefono",         limit: 8
+    t.string  "telefono"
     t.date    "fecha_nacimiento"
-    t.integer "cp"
+    t.string  "cp"
     t.string  "colonia"
     t.string  "localidad"
     t.string  "calle"
@@ -127,8 +127,8 @@ ActiveRecord::Schema.define(version: 20160609224449) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "contract_id"
-    t.string   "devise_model"
-    t.string   "devise_color"
+    t.string   "phone_number"
+    t.string   "code"
   end
 
   add_index "users", ["email"], name: "index_users_on_email"

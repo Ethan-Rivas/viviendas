@@ -6,9 +6,9 @@ class AddNewFieldsToSettlements < ActiveRecord::Migration
     add_column :settlements, :apellido_paterno, :string
     add_column :settlements, :apellido_materno, :string
     add_column :settlements, :curp, :string
-    add_column :settlements, :telefono, :bigint
+    add_column :settlements, :telefono, :string
     add_column :settlements, :fecha_nacimiento, :date
-    add_column :settlements, :cp, :integer
+    add_column :settlements, :cp, :string
     add_column :settlements, :colonia, :string
     add_column :settlements, :localidad, :string
     add_column :settlements, :calle, :string
