@@ -5,4 +5,13 @@ class User < ActiveRecord::Base
   belongs_to :contract
 
   include DeviseTokenAuth::Concerns::User
+
+  before_validation :generate_password
+
+private
+
+  def generate_password
+    self.password = code
+    self.password_confirmation = code
+  end
 end

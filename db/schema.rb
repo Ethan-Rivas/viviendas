@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160607160226) do
+ActiveRecord::Schema.define(version: 20160612190210) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -77,6 +77,30 @@ ActiveRecord::Schema.define(version: 20160607160226) do
     t.boolean "check_8"
     t.boolean "check_9"
     t.boolean "check_10"
+    t.integer "no"
+    t.string  "municipio"
+    t.string  "nombre"
+    t.string  "apellido_paterno"
+    t.string  "apellido_materno"
+    t.string  "curp"
+    t.string  "telefono"
+    t.date    "fecha_nacimiento"
+    t.string  "cp"
+    t.string  "colonia"
+    t.string  "localidad"
+    t.string  "calle"
+    t.integer "num_casa"
+    t.integer "cruzamientos"
+    t.string  "dia"
+    t.string  "mes"
+    t.string  "anio"
+    t.string  "sifode"
+    t.string  "sexo"
+    t.string  "resultado"
+    t.string  "marginacion"
+    t.string  "procedencia"
+    t.string  "procede"
+    t.string  "observacion"
   end
 
   create_table "users", force: :cascade do |t|
@@ -103,8 +127,8 @@ ActiveRecord::Schema.define(version: 20160607160226) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "contract_id"
-    t.string   "devise_model"
-    t.string   "devise_color"
+    t.string   "phone_number"
+    t.string   "code"
   end
 
   add_index "users", ["email"], name: "index_users_on_email"

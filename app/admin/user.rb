@@ -1,31 +1,34 @@
 ActiveAdmin.register User do
-  permit_params :email, :password, :password_confirmation, :devise_model, :devise_color, :contract_id
-
-  config.clear_action_items! # Remove resources
+  permit_params :email, :code, :name, :phone_number, :contract_id #:devise_model, :devise_color
 
   index do
     selectable_column
-    id_column
-    column :devise_model
-    column :devise_color
+    column :contract
+    column :name
+    column :email
+    column :phone_number
     actions
   end
 
   filter :contract
-  filter :devise_model
-  filter :devise_color
 
-  show :title => proc {|user| "#{user.devise_model} #{user.devise_color}" } do
+  show :title => proc {|user| "#{user.name} #{user.contract.name}" } do
     attributes_table do
       row :contract
-      row :devise_model
-      row :devise_color
+      row :name
+      row :email
+      row :phone_number
+      row :code
     end
   end
 
   form do |f|
     f.inputs do
       f.input :contract
+      f.input :name
+      f.input :email
+      f.input :phone_number
+      f.input :code
     end
     f.actions
   end

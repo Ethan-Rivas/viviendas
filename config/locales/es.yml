@@ -4,6 +4,20 @@ es:
       default: "%Y/%m/%d"
       short: "%b %d"
       long: "%B %d, %Y"
+    month_names:
+      -
+      - Enero
+      - Febrero
+      - Marzo
+      - Abril
+      - Mayo
+      - Junio
+      - Julio
+      - Agosto
+      - Septiembre
+      - Octubre
+      - Noviembre
+      - Diciembre
   time:
     formats:
       default: "%Y/%m/%d"
@@ -41,18 +55,24 @@ es:
       contract:
         one: "Contrato"
         other: "Contratos"
-      attributes:
-        user:
-          contract: "Contrato"
-        admin_user:
-          password: "Contraseña"
-          password_confirmation: "Confirmar contraseña"
-          sign_in_count: "Número de Conexiones"
-          created_at: "Creado"
-        contract:
-          name: "Nombre"
-        picture:
-          title: "Nombre"
-          image: "Imagen"
-        settlement:
-          contract: "Contrato"
+    attributes:
+      user:
+        contract: "Contrato"
+        name: "Nombre"
+        phone_number: "Número telefónico"
+        code: "Código de Acesso"
+      admin_user:
+        password: "Contraseña"
+        password_confirmation: "Confirmar contraseña"
+        sign_in_count: "Número de Conexiones"
+        created_at: "Creado"
+      contract:
+        name: "Nombre"
+      picture:
+        title: "Nombre"
+        image: "Imagen"
+      settlement:
+        contract: "Contrato"
+        owner_name: "Dueño"
+        address: "Direccion"
+        progress: "Progreso"
