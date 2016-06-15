@@ -50,11 +50,20 @@ es:
         one: "Foto"
         other: "Fotos"
       settlement:
-        one: "Asentamiento"
-        other: "Asentamientos"
+        one: "Vivienda"
+        other: "Viviendas"
       contract:
         one: "Contrato"
         other: "Contratos"
+      company:
+        one: "Constructora"
+        other: "Constructoras"
+      company:
+        one: "Constructora"
+        other: "Constructoras"
+      package:
+        one: "Paquete"
+        other: "Paquetes"
     attributes:
       user:
         contract: "Contrato"
@@ -68,6 +77,7 @@ es:
         created_at: "Creado"
       contract:
         name: "Nombre"
+        company: "Constructora"
       picture:
         title: "Nombre"
         image: "Imagen"
@@ -76,3 +86,6 @@ es:
         owner_name: "Dueño"
         address: "Direccion"
         progress: "Progreso"
+      package:
+        contract: "Contrato"
+        name: "Nombre"
