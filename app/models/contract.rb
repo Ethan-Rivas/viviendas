@@ -1,6 +1,6 @@
 class Contract < ActiveRecord::Base
   has_many :settlements
-  has_many :packages
+  belongs_to :package
   has_many :users
   belongs_to :company
 end

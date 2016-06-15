@@ -1,5 +1,5 @@
 ActiveAdmin.register Package do
-  permit_params :name, :contract_id
+  permit_params :name
 
   index do
     selectable_column
@@ -10,8 +10,14 @@ ActiveAdmin.register Package do
   show do
     attributes_table do
       row :name
-      row :contract
     end
+  end
+
+  form do |f|
+    f.inputs do
+      f.input :name
+    end
+    f.actions
   end
 
 end
