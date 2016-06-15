@@ -1,6 +1,7 @@
 class Settlement < ActiveRecord::Base
   has_many :pictures
   belongs_to :contract
+  belongs_to :package
 
   def contract_name=(name)
     self.contract_id = Contract.find_or_create_by({name: name}).id
