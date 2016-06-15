@@ -1,5 +1,5 @@
-ActiveAdmin.register Contract do
-  permit_params :name, :company_id
+ActiveAdmin.register Package do
+  permit_params :name, :contract_id
 
   index do
     selectable_column
@@ -10,7 +10,7 @@ ActiveAdmin.register Contract do
   show do
     attributes_table do
       row :name
-      row :company
+      row :contract
     end
   end
 
