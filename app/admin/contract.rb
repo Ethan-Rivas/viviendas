@@ -20,6 +20,7 @@ ActiveAdmin.register Contract do
       f.input :package, as: :check_boxes, collection: Package.all.map { |u| [u.name, u.id] }
       f.input :name
       f.input :company
+      f.input :devices_number, as: :select, collection: (1..10), :prompt => "0"
     end
     f.actions
   end
