@@ -1,4 +1,7 @@
 class Settlement < ActiveRecord::Base
+  has_many :progress_inputs
+  has_many :progress_checks, :through => :progress_inputs
+
   has_many :pictures
   belongs_to :contract
   belongs_to :package
