@@ -58,9 +58,6 @@ es:
       company:
         one: "Constructora"
         other: "Constructoras"
-      company:
-        one: "Constructora"
-        other: "Constructoras"
       package:
         one: "Paquete"
         other: "Paquetes"
@@ -82,6 +79,8 @@ es:
         name: "Nombre"
         company: "Constructora"
         package: "Paquetes"
+        progress: "Progreso"
+        users: "Dispositivos"
       picture:
         title: "Nombre"
         image: "Imagen"
@@ -95,6 +94,12 @@ es:
       package:
         contract: "Contrato"
         name: "Nombre"
+        contracts: "Contratos"
+        settlements: "Viviendas"
       progress_check:
         name: "Nombre"
         value: "Valor"
+      company:
+        name: "Nombre"
+        contract: "Contrato"
+        contracts: "Contratos"
