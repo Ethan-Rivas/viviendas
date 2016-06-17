@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  root to: 'admin/dashboard#index'
+  root to: 'admin/companies#index'
 
   namespace :api do
     namespace :v1 do
