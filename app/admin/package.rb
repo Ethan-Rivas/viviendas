@@ -4,8 +4,17 @@ ActiveAdmin.register Package do
   index do
     selectable_column
     column :name
+    column "# de Viviendas" do |package|
+      link_to pluralize(package.settlements.count, 'Vivienda'), admin_settlements_path({
+        q: {
+          package_id_eq: package.id
+        }
+      })
+    end
     actions
   end
+
+  filter :contracts
 
   show do
     attributes_table do
