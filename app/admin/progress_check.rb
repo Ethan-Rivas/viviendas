@@ -8,4 +8,6 @@ ActiveAdmin.register ProgressCheck do
     actions
   end
 
+  config.filters = false
+
 end

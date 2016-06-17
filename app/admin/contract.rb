@@ -3,9 +3,13 @@ ActiveAdmin.register Contract do
 
   index do
     selectable_column
+    column :company
     column :name
+    column :progress
     actions
   end
+
+  filter :company
 
   show do
     attributes_table do

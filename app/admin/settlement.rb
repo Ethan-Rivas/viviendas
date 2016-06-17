@@ -8,33 +8,33 @@ ActiveAdmin.register Settlement do
 
   index do
     selectable_column
-    column :no
+    #column :no
     column :municipio
     column :nombre
-    column :apellido_materno
     column :apellido_paterno
+    column :apellido_materno
     column :curp
-    column :telefono
-    column(:fecha_nacimiento) do |settlement|
-      settlement.fecha_nacimiento.try(:strftime, '%d/%m/%Y')
-    end
-    column :cp
-    column :colonia
-    column :localidad
-    column :calle
-    column :num_casa
-    column :cruzamientos
-    column :dia
-    column :mes
-    column :anio
-    column :sifode
-    column :sexo
-    column :resultado
+    #column :telefono
+    #column(:fecha_nacimiento) do |settlement|
+      #settlement.fecha_nacimiento.try(:strftime, '%d/%m/%Y')
+    #end
+    #column :cp
+    #column :colonia
+    #column :localidad
+    #column :calle
+    #column :num_casa
+    #column :cruzamientos
+    #column :dia
+    #column :mes
+    #column :anio
+    #column :sifode
+    #column :sexo
+    #column :resultado
     column :progress
     actions
   end
 
-filter :contract
+filter :package
 
 form do |f|
   f.inputs do
@@ -67,6 +67,7 @@ end
 
   show do
     attributes_table do
+      row :progress
       row :package
       row :no
       row :municipio
