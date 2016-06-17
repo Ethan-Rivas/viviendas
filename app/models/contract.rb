@@ -1,5 +1,5 @@
 class Contract < ActiveRecord::Base
-  has_many :settlements
+  has_many :settlements, through: :package
   belongs_to :package
   has_many :users
   belongs_to :company
@@ -12,6 +12,11 @@ class Contract < ActiveRecord::Base
     n = n.to_i
     generate_devices(devices_number.succ, n) if n > devices_number
     destroy_devices_from(n) if n < devices_number
+  end
+
+  def progress
+    return 0 if settlements.empty?
+    settlements.all.map(&:progress).sum.to_f / settlements.count
   end
 
 private
