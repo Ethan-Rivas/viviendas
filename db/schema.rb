@@ -54,9 +54,9 @@ ActiveRecord::Schema.define(version: 20160617174324) do
   end
 
   create_table "contracts", force: :cascade do |t|
-    t.string "name"
-    t.string "company_id"
-    t.string "package_id"
+    t.string  "name"
+    t.integer "company_id"
+    t.integer "package_id"
   end
 
   create_table "packages", force: :cascade do |t|
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 20160617174324) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.string   "settlement_id"
+    t.integer  "settlement_id"
   end
 
   create_table "progress_checks", force: :cascade do |t|
@@ -82,8 +82,8 @@ ActiveRecord::Schema.define(version: 20160617174324) do
   end
 
   create_table "progress_inputs", force: :cascade do |t|
-    t.string   "progress_check_id"
-    t.string   "settlement_id"
+    t.integer  "progress_check_id"
+    t.integer  "settlement_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
@@ -127,7 +127,7 @@ ActiveRecord::Schema.define(version: 20160617174324) do
     t.string  "procedencia"
     t.string  "procede"
     t.string  "observacion"
-    t.string  "package_id"
+    t.integer "package_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -153,7 +153,7 @@ ActiveRecord::Schema.define(version: 20160617174324) do
     t.text     "tokens"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "contract_id"
+    t.integer  "contract_id"
     t.string   "phone_number"
     t.string   "code"
   end

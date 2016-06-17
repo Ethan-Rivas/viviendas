@@ -30,7 +30,9 @@ ActiveAdmin.register Settlement do
     #column :sifode
     #column :sexo
     #column :resultado
-    column :progress
+    column 'Progreso' do |settlement|
+      "#{settlement.progress}%"
+    end
     actions
   end
 
