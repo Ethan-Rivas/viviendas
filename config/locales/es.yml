@@ -58,12 +58,12 @@ es:
       company:
         one: "Constructora"
         other: "Constructoras"
-      company:
-        one: "Constructora"
-        other: "Constructoras"
       package:
         one: "Paquete"
         other: "Paquetes"
+      progress_check:
+        one: "Campo a Evaluar"
+        other: "Campos a Evaluar"
     attributes:
       user:
         contract: "Contrato"
@@ -78,6 +78,9 @@ es:
       contract:
         name: "Nombre"
         company: "Constructora"
+        package: "Paquetes"
+        progress: "Progreso"
+        users: "Dispositivos"
       picture:
         title: "Nombre"
         image: "Imagen"
@@ -86,6 +89,17 @@ es:
         owner_name: "Dueño"
         address: "Direccion"
         progress: "Progreso"
+        package: "Paquete"
+        progress_checks: "Campos a Evaluar"
       package:
         contract: "Contrato"
         name: "Nombre"
+        contracts: "Contratos"
+        settlements: "Viviendas"
+      progress_check:
+        name: "Nombre"
+        value: "Valor"
+      company:
+        name: "Nombre"
+        contract: "Contrato"
+        contracts: "Contratos"

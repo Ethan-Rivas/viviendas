@@ -1,43 +1,40 @@
 ActiveAdmin.register Settlement do
-  permit_params :package, :no, :municipio, :nombre, :apellido_materno, :apellido_paterno,
+  permit_params :package_id, :no, :municipio, :nombre, :apellido_materno, :apellido_paterno,
                 :curp, :telefono, :fecha_nacimiento, :cp, :colonia, :localidad, :calle,
                 :num_casa, :cruzamientos, :dia, :mes, :anio, :sifode, :sexo, :resultado,
-                :marginacion, :procedencia, :procede, :observacion, :owner_name,
-                :check_1, :check_2, :check_3, :check_4,
-                :check_5, :check_6, :check_7, :check_8,
-                :check_9, :check_10, :contract_id
+                :marginacion, :procedencia, :procede, :observacion, :owner_name, progress_check_ids: []
 
   active_admin_importable
 
   index do
     selectable_column
-    column :no
+    #column :no
     column :municipio
     column :nombre
-    column :apellido_materno
     column :apellido_paterno
+    column :apellido_materno
     column :curp
-    column :telefono
-    column(:fecha_nacimiento) do |settlement|
-      settlement.fecha_nacimiento.try(:strftime, '%d/%m/%Y')
-    end
-    column :cp
-    column :colonia
-    column :localidad
-    column :calle
-    column :num_casa
-    column :cruzamientos
-    column :dia
-    column :mes
-    column :anio
-    column :sifode
-    column :sexo
-    column :resultado
+    #column :telefono
+    #column(:fecha_nacimiento) do |settlement|
+      #settlement.fecha_nacimiento.try(:strftime, '%d/%m/%Y')
+    #end
+    #column :cp
+    #column :colonia
+    #column :localidad
+    #column :calle
+    #column :num_casa
+    #column :cruzamientos
+    #column :dia
+    #column :mes
+    #column :anio
+    #column :sifode
+    #column :sexo
+    #column :resultado
     column :progress
     actions
   end
 
-filter :contract
+filter :package
 
 form do |f|
   f.inputs do
@@ -62,22 +59,15 @@ form do |f|
     f.input :sifode
     f.input :sexo
     f.input :resultado
-    f.input :check_1
-    f.input :check_2
-    f.input :check_3
-    f.input :check_4
-    f.input :check_5
-    f.input :check_6
-    f.input :check_7
-    f.input :check_8
-    f.input :check_9
-    f.input :check_10
+    f.input :progress_checks, as: :check_boxes,
+      collection: ProgressCheck.all.map { |p| [p.name, p.id] }
   end
   f.actions
 end
 
   show do
     attributes_table do
+      row :progress
       row :package
       row :no
       row :municipio
@@ -99,16 +89,6 @@ end
       row :sifode
       row :sexo
       row :resultado
-      row :check_1
-      row :check_2
-      row :check_3
-      row :check_4
-      row :check_5
-      row :check_6
-      row :check_7
-      row :check_8
-      row :check_9
-      row :check_10
     end
   end
 

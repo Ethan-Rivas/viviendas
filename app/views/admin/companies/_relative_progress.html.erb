@@ -1,0 +1,13 @@
+<svg width="200" height="20">
+  <line x1="100" y1="0" x2="100" y2="20" style="stroke:black;stroke-width:1;" />
+
+  <%- if progress > avg -%>
+    <rect x="100" y="2" width="<%= progress - avg %>" height="16" style="fill:#19a861;stroke-width:0;" />
+    <text x="105" y="14" fill="black"><%= progress %>%</text>
+  <%- end -%>
+
+  <%- if progress < avg -%>
+    <rect x="<%= progress %>" y="2" width="<%= 100 - progress %>" height="16" style="fill:#ef1633;stroke-width:0;" />
+    <text x="95" y="14" fill="black" text-anchor="end"><%= progress %>%</text>
+  <%- end -%>
+</svg>

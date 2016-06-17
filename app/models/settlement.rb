@@ -1,4 +1,7 @@
 class Settlement < ActiveRecord::Base
+  has_many :progress_inputs
+  has_many :progress_checks, :through => :progress_inputs
+
   has_many :pictures
   belongs_to :contract
   belongs_to :package
@@ -8,8 +11,6 @@ class Settlement < ActiveRecord::Base
   end
 
   def progress
-    (1..10).select do |i|
-      attributes["check_#{i}"]
-    end.count
+    progress_checks.all.map(&:value).sum
   end
 end

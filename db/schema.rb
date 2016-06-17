@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160615221747) do
+ActiveRecord::Schema.define(version: 20160617174324) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -76,8 +76,19 @@ ActiveRecord::Schema.define(version: 20160615221747) do
     t.string   "settlement_id"
   end
 
+  create_table "progress_checks", force: :cascade do |t|
+    t.string  "name"
+    t.integer "value"
+  end
+
+  create_table "progress_inputs", force: :cascade do |t|
+    t.string   "progress_check_id"
+    t.string   "settlement_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
   create_table "settlements", force: :cascade do |t|
-    t.string  "contract_id"
     t.string  "owner_name"
     t.string  "address"
     t.float   "geo_x"

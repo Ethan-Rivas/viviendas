@@ -1,5 +1,6 @@
 ActiveAdmin.register User do
   permit_params :email, :code, :name, :phone_number, :contract_id #:devise_model, :devise_color
+  config.clear_action_items!
 
   index do
     selectable_column
@@ -24,9 +25,7 @@ ActiveAdmin.register User do
 
   form do |f|
     f.inputs do
-      f.input :contract
       f.input :name
-      f.input :email
       f.input :phone_number
       f.input :code
     end
