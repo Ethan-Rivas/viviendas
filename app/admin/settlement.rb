@@ -63,6 +63,8 @@ form do |f|
     f.input :resultado
     f.input :progress_checks, as: :check_boxes,
       collection: ProgressCheck.all.map { |p| [p.name, p.id] }
+    f.input :geo_x
+    f.input :geo_y
   end
   f.actions
 end
@@ -91,6 +93,8 @@ end
       row :sifode
       row :sexo
       row :resultado
+      row :geo_x
+      row :geo_y
     end
   end
 
