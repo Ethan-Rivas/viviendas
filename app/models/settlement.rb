@@ -11,6 +11,8 @@ class Settlement < ActiveRecord::Base
   end
 
   def progress
-    progress_checks.all.map(&:value).sum
+    progress_inputs.all.map do |input|
+      input.progress_check.value * input.progress / 100.0
+    end.sum
   end
 end
