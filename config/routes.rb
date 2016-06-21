@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :settlements, only: [:index, :show, :update] do
         resources :pictures
+        resources :progress, only: [:update]
       end
       mount_devise_token_auth_for 'User', at: 'auth', controllers: {
         registrations: 'api/v1/registrations'
