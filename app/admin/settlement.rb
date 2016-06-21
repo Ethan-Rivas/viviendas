@@ -2,8 +2,7 @@ ActiveAdmin.register Settlement do
   permit_params :package_id, :no, :municipio, :nombre, :apellido_materno, :apellido_paterno,
                 :curp, :telefono, :fecha_nacimiento, :cp, :colonia, :localidad, :calle,
                 :num_casa, :cruzamientos, :dia, :mes, :anio, :sifode, :sexo, :resultado,
-                :marginacion, :procedencia, :procede, :observacion, :owner_name, progress_check_ids: [],
-                :geo_x, :geo_y
+                :marginacion, :procedencia, :procede, :observacion, :owner_name, progress_check_ids: []
 
   active_admin_importable
 
@@ -65,8 +64,6 @@ form do |f|
     f.input :progress_checks, as: :check_boxes,
       collection: ProgressCheck.all.map { |p| [p.name, p.id] }
   end
-    f.input :geo_x
-    f.input :geo_y
   f.actions
 end
 
@@ -94,8 +91,6 @@ end
       row :sifode
       row :sexo
       row :resultado
-      row :geo_x
-      row :geo_y
     end
   end
 
