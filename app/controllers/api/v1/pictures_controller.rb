@@ -1,4 +1,5 @@
 class Api::V1::PicturesController < ApiController
+  before_action :authenticate_user!
   before_filter :find_settlement
 
   def create
