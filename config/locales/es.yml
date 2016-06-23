@@ -62,8 +62,8 @@ es:
         one: "Paquete"
         other: "Paquetes"
       progress_check:
-        one: "Campo a Evaluar"
-        other: "Campos a Evaluar"
+        one: "Ítem"
+        other: "Ítems"
     attributes:
       user:
         contract: "Contrato"
@@ -90,7 +90,7 @@ es:
         address: "Direccion"
         progress: "Progreso"
         package: "Paquete"
-        progress_checks: "Campos a Evaluar"
+        progress_checks: "Ítems"
       package:
         contract: "Contrato"
         name: "Nombre"
