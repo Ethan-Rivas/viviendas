@@ -66,6 +66,12 @@ group :development do
   gem 'quiet_assets'
 end
 
+group :test do
+  gem 'database_cleaner', '~> 1.4.1'
+  gem 'rspec-rails', '~> 3.1'
+  gem 'factory_girl_rails', '~> 4.0'
+end
+
 group :production do
   # Use postgres because heroku
   gem 'pg'
