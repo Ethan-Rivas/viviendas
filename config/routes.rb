@@ -13,6 +13,7 @@ Rails.application.routes.draw do
         resources :progress, only: [:update]
       end
       mount_devise_token_auth_for 'User', at: 'auth', controllers: {
+        sessions: 'api/v1/sessions',
         registrations: 'api/v1/registrations'
       }
     end
