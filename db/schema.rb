@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160622204125) do
+ActiveRecord::Schema.define(version: 20160623141814) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -57,6 +57,13 @@ ActiveRecord::Schema.define(version: 20160622204125) do
     t.string  "name"
     t.integer "company_id"
     t.integer "package_id"
+  end
+
+  create_table "kml_files", force: :cascade do |t|
+    t.string   "upload_file_name"
+    t.string   "upload_content_type"
+    t.integer  "upload_file_size"
+    t.datetime "upload_updated_at"
   end
 
   create_table "packages", force: :cascade do |t|
