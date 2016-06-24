@@ -33,6 +33,8 @@ gem 'active_admin_importable'
 gem 'devise_token_auth'
 # RestClient
 gem 'rest-client'
+# Intelligent sound search
+gem 'fuzzy_match'
 # Awesome print
 gem 'awesome_print'
 

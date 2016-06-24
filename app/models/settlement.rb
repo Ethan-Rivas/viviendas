@@ -15,4 +15,8 @@ class Settlement < ActiveRecord::Base
       input.progress_check.value * input.progress / 100.0
     end.sum
   end
+
+  def owner_full_name
+    [nombre, apellido_paterno, apellido_materno].join(' ')
+  end
 end
