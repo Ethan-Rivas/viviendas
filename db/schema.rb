@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160623205148) do
+ActiveRecord::Schema.define(version: 20160624032217) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -77,7 +77,10 @@ ActiveRecord::Schema.define(version: 20160623205148) do
     t.integer "geo_x"
     t.integer "geo_y"
     t.integer "settlement_id"
+    t.integer "kml_file_id"
   end
+
+  add_index "kml_settlements", ["kml_file_id"], name: "index_kml_settlements_on_kml_file_id"
 
   create_table "packages", force: :cascade do |t|
     t.datetime "created_at", null: false
