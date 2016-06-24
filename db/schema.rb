@@ -74,8 +74,8 @@ ActiveRecord::Schema.define(version: 20160624032217) do
 
   create_table "kml_settlements", force: :cascade do |t|
     t.string  "name"
-    t.integer "geo_x"
-    t.integer "geo_y"
+    t.float   "geo_x"
+    t.float   "geo_y"
     t.integer "settlement_id"
     t.integer "kml_file_id"
   end
