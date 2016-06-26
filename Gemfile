@@ -37,6 +37,8 @@ gem 'rest-client'
 gem 'fuzzy_match'
 # Awesome print
 gem 'awesome_print'
+# Amazon s3 support
+gem 'aws-sdk', '< 2.0'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
