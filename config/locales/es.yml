@@ -39,6 +39,7 @@ es:
     errors:
       messages:
         blank: "No puede dejarse vacío."
+        invalid: 'Archivo no válido.'
     models:
       user:
         one: "Dispositivo"
@@ -64,6 +65,9 @@ es:
       progress_check:
         one: "Ítem"
         other: "Ítems"
+      town:
+        one: 'Municipio'
+        other: 'Municipios'
     attributes:
       user:
         contract: "Contrato"
@@ -81,6 +85,8 @@ es:
         package: "Paquetes"
         progress: "Progreso"
         users: "Dispositivos"
+      kml_file:
+        town: 'Municipio'
       picture:
         title: "Nombre"
         image: "Imagen"
@@ -91,6 +97,7 @@ es:
         progress: "Progreso"
         package: "Paquete"
         progress_checks: "Ítems"
+        town: 'Municipio'
       package:
         contract: "Contrato"
         name: "Nombre"

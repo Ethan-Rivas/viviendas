@@ -34,7 +34,7 @@ gem 'devise_token_auth'
 # RestClient
 gem 'rest-client'
 # Intelligent sound search
-gem 'fuzzy_match'
+gem 'fuzzily'
 # Awesome print
 gem 'awesome_print'
 # Amazon s3 support
