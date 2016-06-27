@@ -6,6 +6,14 @@ class Settlement < ActiveRecord::Base
   belongs_to :contract
   belongs_to :package
 
+  belongs_to :town
+  delegate :name, to: :town, prefix: true, allow_nil: true
+  alias_method :municipio, :town_name
+
+  def municipio=(name)
+    self.town = Town.find_or_create_by({ name: name })
+  end
+
   def contract_name=(name)
     self.contract_id = Contract.find_or_create_by({name: name}).id
   end

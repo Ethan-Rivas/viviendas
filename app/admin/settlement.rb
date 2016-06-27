@@ -37,6 +37,7 @@ ActiveAdmin.register Settlement do
   end
 
 filter :package
+filter :town
 
 form do |f|
   f.inputs do
