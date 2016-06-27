@@ -10,6 +10,11 @@ class Settlement < ActiveRecord::Base
   delegate :name, to: :town, prefix: true, allow_nil: true
   alias_method :municipio, :town_name
 
+  before_validation Proc.new { |settlement|
+    settlement.owner_name = I18n.transliterate(owner_full_name)
+  }, on: :create
+  fuzzily_searchable :owner_name
+
   def municipio=(name)
     self.town = Town.find_or_create_by({ name: name })
   end

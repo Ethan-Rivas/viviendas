@@ -1,34 +1,18 @@
 class KmlSettlement < ActiveRecord::Base
-  has_many :kml_options
+  has_many :options, class_name: 'KmlOption', dependent: :destroy
   belongs_to :kml_file
   belongs_to :settlement
 
-  after_create :find_settlement
-  after_update :update_settlement, if: :settlement_id_changed?
+  after_create :generate_options
+  after_update :update_settlement, if: Proc.new { |kml|
+    kml.settlement_id_changed? && kml.settlement.present?
+  }
 
 private
 
-  def find_settlement
-    (exact_match || fuzzy_match).tap do |settlement|
-      update_attribute :settlement, settlement
-    end
-  end
-
-  def exact_match
-    Settlement.all.detect do |settlement|
-      t(settlement.owner_full_name) == t(name)
-    end
-  end
-
-  def fuzzy_match
-    settlements = Settlement.all
-    names = settlements.map { |s| t(s.owner_full_name) }
-
-    match = FuzzyMatch.new(names).find(name)
-
-    if match
-      puts "#{match} - #{name}"
-      settlements[names.index(match)]
+  def generate_options
+    kml_file.town.settlements.find_by_fuzzy_owner_name(t(name)).each_with_index do |settlement, index|
+      options.create(settlement: settlement, rank: index.succ)
     end
   end
 
@@ -40,6 +24,6 @@ private
   end
 
   def t(string)
-    I18n.transliterate(string).upcase
+    string && I18n.transliterate(string).upcase
   end
 end

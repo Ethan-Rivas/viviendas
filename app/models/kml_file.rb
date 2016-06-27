@@ -8,6 +8,7 @@ class KmlFile < ActiveRecord::Base
 
   has_many :kml_settlements, dependent: :destroy
   after_commit :extract_settlements, on: :create
+  accepts_nested_attributes_for :kml_settlements
 
   def extract_settlements
     KmlParser.new(xml).parse.each do |settlement|
