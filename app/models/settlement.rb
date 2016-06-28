@@ -15,6 +15,10 @@ class Settlement < ActiveRecord::Base
   }, on: :create
   fuzzily_searchable :owner_name
 
+  def as_json(options = {})
+    super(methods: :items)
+  end
+
   def municipio=(name)
     self.town = Town.find_or_create_by({ name: name })
   end
@@ -31,5 +35,19 @@ class Settlement < ActiveRecord::Base
 
   def owner_full_name
     [nombre, apellido_paterno, apellido_materno].join(' ')
+  end
+
+  def items
+    ProgressCheck.all.map do |item|
+      {
+        id: item.id,
+        name: item.name,
+        value: progress_for(item)
+      }
+    end
+  end
+
+  def progress_for(item)
+    progress_inputs.find_or_initialize_by(progress_check_id: item.id).progress
   end
 end

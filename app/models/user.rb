@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
           :recoverable, :rememberable, :trackable, :validatable
   belongs_to :contract
+  delegate :settlements, to: :contract, allow_nil: true
 
   include DeviseTokenAuth::Concerns::User
 
