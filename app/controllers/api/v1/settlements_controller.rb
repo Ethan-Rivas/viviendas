@@ -1,9 +1,9 @@
 class Api::V1::SettlementsController < ApiController
   before_action :authenticate_user!
-  before_filter :find_settlement, only: [:show, :update]
+  before_filter :find_settlement, only: :show
 
   def index
-    settlements = current_user.contract.package.settlements
+    settlements = current_user.settlements
 
     render json: settlements
   end
@@ -12,9 +12,9 @@ class Api::V1::SettlementsController < ApiController
     render json: @settlement
   end
 
-  private
+private
 
   def find_settlement
-    @settlement = Settlement.find(params[:id])
+    @settlement = current_user.settlements.find(params[:id])
   end
 end
