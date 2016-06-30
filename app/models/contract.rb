@@ -1,6 +1,7 @@
 class Contract < ActiveRecord::Base
   has_many :settlements, through: :package
   belongs_to :package
+  after_create :create_package
   has_many :users
   belongs_to :company
 
@@ -34,5 +35,9 @@ private
     users.each_with_index do |user, index|
       user.destroy if index >= n
     end
+  end
+
+  def create_package
+    update_attribute :package, Package.create(name: name)
   end
 end

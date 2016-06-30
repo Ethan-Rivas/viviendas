@@ -3,8 +3,8 @@ class Settlement < ActiveRecord::Base
   has_many :progress_checks, :through => :progress_inputs
 
   has_many :pictures
-  belongs_to :contract
   belongs_to :package
+  has_many :contracts, through: :package
 
   belongs_to :town
   delegate :name, to: :town, prefix: true, allow_nil: true
@@ -14,6 +14,8 @@ class Settlement < ActiveRecord::Base
     settlement.owner_name = I18n.transliterate(owner_full_name)
   }, on: :create
   fuzzily_searchable :owner_name
+
+  before_create :sign_contract
 
   def as_json(options = {})
     super(methods: :items)
@@ -58,9 +60,18 @@ class Settlement < ActiveRecord::Base
   end
 
   def constructor=(value)
+    @company = Company.find_or_create_by(name: value)
   end
 
   def licitacion=(value)
+    return if value.blank?
+
+    contract = Contract.find_or_create_by(name: value)
+    self.package = contract.package
+  end
+
+  def sign_contract
+    package.contracts.first.update_attribute :company, @company
   end
 
   def items
