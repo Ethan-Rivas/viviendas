@@ -37,6 +37,32 @@ class Settlement < ActiveRecord::Base
     [nombre, apellido_paterno, apellido_materno].join(' ')
   end
 
+  def a_paterno=(value)
+    self.apellido_paterno = value
+  end
+
+  def a_materno=(value)
+    self.apellido_materno = value
+  end
+
+  def numero=(value)
+    self.telefono = value
+  end
+
+  def latitud=(value)
+    self.geo_y = value
+  end
+
+  def longitud=(value)
+    self.geo_x = value
+  end
+
+  def constructor=(value)
+  end
+
+  def licitacion=(value)
+  end
+
   def items
     ProgressCheck.all.map do |item|
       {
