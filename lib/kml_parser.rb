@@ -4,7 +4,7 @@ class KmlParser
   end
 
   def parse
-    @data['kml']['Document']['Folder']['Placemark'].map do |node|
+    @data['kml']['Folder']['Placemark'].map do |node|
       parse_node(node)
     end
   end

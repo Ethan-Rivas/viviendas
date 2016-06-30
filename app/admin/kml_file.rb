@@ -4,7 +4,7 @@ ActiveAdmin.register KmlFile do
   form html: { enctype: 'multipart/form-data' } do |f|
     if object.new_record?
       f.inputs 'Cargar archivo KML' do
-        f.input :town, as: :select, :prompt => "Selecione un Municipio",include_blank: false
+        f.input :town, as: :select, prompt: 'Selecione un Municipio',include_blank: false
         f.input :upload, as: :file
       end
     else
