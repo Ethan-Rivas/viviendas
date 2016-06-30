@@ -1,7 +1,12 @@
 class KmlFile < ActiveRecord::Base
   has_attached_file :upload
-  validates_attachment :upload, content_type: { content_type: 'application/octet-stream' }
-  validates_format_of :upload_file_name, with: /\.kml\z/
+  validates_attachment :upload, content_type: {
+    content_type: [
+      'application/octet-stream',
+      'application/vnd.google-earth.kml+xml'
+    ]
+  }
+  #validates_format_of :upload_file_name, with: /\.kml\z/
 
   belongs_to :town
   validates :town, presence: true
