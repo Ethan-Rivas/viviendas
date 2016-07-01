@@ -4,10 +4,10 @@ ActiveAdmin.register User do
 
   index do
     selectable_column
-    column :contract
-    column :name
-    column :email
-    column :phone_number
+    column 'Contrato' do |user|
+      user.email.split('@').first.upcase
+    end
+    column :code
     actions
   end
 
@@ -23,10 +23,8 @@ ActiveAdmin.register User do
     end
   end
 
-  form do |f|
+  form title: proc { |user| "Dispositivo: #{user.username}" } do |f|
     f.inputs do
-      f.input :name
-      f.input :phone_number
       f.input :code
     end
     f.actions

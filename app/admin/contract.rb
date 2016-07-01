@@ -5,6 +5,13 @@ ActiveAdmin.register Contract do
     selectable_column
     column :company
     column :name
+    column "# de Viviendas" do |package|
+      link_to pluralize(package.settlements.count, 'Vivienda'), admin_settlements_path({
+        q: {
+          package_id_eq: package.id
+        }
+      })
+    end
     column :progress
     actions
   end
@@ -24,7 +31,6 @@ ActiveAdmin.register Contract do
       f.input :package, as: :select, collection: Package.all.map { |u| [u.name, u.id] }
       f.input :name
       f.input :company
-      f.input :devices_number, as: :select, collection: (0..10), include_blank: false
     end
     f.actions
   end

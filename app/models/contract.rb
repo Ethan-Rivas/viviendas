@@ -2,8 +2,11 @@ class Contract < ActiveRecord::Base
   has_many :settlements, through: :package
   belongs_to :package
   after_create :create_package
+  after_create :generate_device
   has_many :users
   belongs_to :company
+
+  validates :name, presence: true
 
   def devices_number
     users.count
@@ -22,13 +25,11 @@ class Contract < ActiveRecord::Base
 
 private
 
-  def generate_devices(first, last)
-    (first..last).each do |i|
-      users.create({
-        email: "#{name}-M#{i}@codigo.jade",
-        code: 'CODIGO'
+  def generate_device
+      User.create({
+        email: "#{name}@codigo.jade",
+        code: rand(36**6).to_s(36).upcase
       })
-    end
   end
 
   def destroy_devices_from(n)
