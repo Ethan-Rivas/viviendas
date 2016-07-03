@@ -26,10 +26,10 @@ class Contract < ActiveRecord::Base
 private
 
   def generate_device
-      User.create({
-        email: "#{name}@codigo.jade",
-        code: rand(36**6).to_s(36).upcase
-      })
+    users.create({
+      email: "#{name}@codigo.jade",
+      code: rand(36**6).to_s(36).upcase
+    })
   end
 
   def destroy_devices_from(n)
