@@ -12,7 +12,9 @@ ActiveAdmin.register Contract do
         }
       })
     end
-    column :progress
+    column 'Progreso' do |package|
+      "#{package.progress.round(2)}%"
+    end
     actions
   end
 
