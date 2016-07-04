@@ -13,23 +13,28 @@ ActiveAdmin.register Settlement do
     column :nombre
     column :apellido_paterno
     column :apellido_materno
-    column :curp
-    #column :telefono
-    #column(:fecha_nacimiento) do |settlement|
-      #settlement.fecha_nacimiento.try(:strftime, '%d/%m/%Y')
-    #end
-    #column :cp
-    #column :colonia
-    #column :localidad
-    #column :calle
-    #column :num_casa
-    #column :cruzamientos
-    #column :dia
-    #column :mes
-    #column :anio
-    #column :sifode
-    #column :sexo
-    #column :resultado
+    column 'GPS' do |settlement|
+      if settlement.geo_x.present? && settlement.geo_y.present?
+        "(#{settlement.geo_x}, #{settlement.geo_y})"
+      end
+    end
+    # column :curp
+    # column :telefono
+    # column(:fecha_nacimiento) do |settlement|
+      # settlement.fecha_nacimiento.try(:strftime, '%d/%m/%Y')
+    # end
+    # column :cp
+    # column :colonia
+    # column :localidad
+    # column :calle
+    # column :num_casa
+    # column :cruzamientos
+    # column :dia
+    # column :mes
+    # column :anio
+    # column :sifode
+    # column :sexo
+    # column :resultado
     column 'Progreso' do |settlement|
       "#{settlement.progress}%"
     end

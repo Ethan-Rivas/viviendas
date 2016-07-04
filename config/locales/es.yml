@@ -95,7 +95,7 @@ es:
         owner_name: "Dueño"
         address: "Direccion"
         progress: "Progreso"
-        package: "Paquete"
+        package: "Contrato"
         progress_checks: "Ítems"
         town: 'Municipio'
       package:
