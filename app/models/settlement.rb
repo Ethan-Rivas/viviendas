@@ -18,7 +18,10 @@ class Settlement < ActiveRecord::Base
   before_create :sign_contract
 
   def as_json(options = {})
-    super(methods: :items)
+    super(methods: :items).merge({
+      geo_x: geo_y,
+      geo_y: geo_x
+    })
   end
 
   def municipio=(name)
