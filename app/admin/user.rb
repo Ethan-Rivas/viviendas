@@ -9,6 +9,13 @@ ActiveAdmin.register User do
       user.email.split('@').first.upcase
     end
     column :code
+    column 'Descarga de Viviendas' do |user|
+      if user.last_sign_in_at.present?
+        I18n.l user.last_sign_in_at
+      else
+        'Nunca'
+      end
+    end
     actions
   end
 

@@ -20,7 +20,7 @@ es:
       - Diciembre
   time:
     formats:
-      default: "%Y/%m/%d"
+      default: "%d de %B, %Y"
       short: "%b %d"
       long: "%B %d, %Y"
   devise:
