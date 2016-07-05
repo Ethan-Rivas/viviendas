@@ -4,7 +4,8 @@ ActiveAdmin.register User do
 
   index do
     selectable_column
-    column 'Contrato' do |user|
+    column :contract
+    column 'Usuario' do |user|
       user.email.split('@').first.upcase
     end
     column :code

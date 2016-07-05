@@ -4,15 +4,20 @@ ActiveAdmin.register Settlement do
                 :num_casa, :cruzamientos, :dia, :mes, :anio, :sifode, :sexo, :resultado,
                 :marginacion, :procedencia, :procede, :observacion, :owner_name, :geo_x, :geo_y, progress_check_ids: []
 
-  active_admin_importable
+  active_admin_importable do |model, hash|
+    hash.each do |key, value|
+      hash[key] = value.encode('UTF-8', 'Windows-1252') unless value.blank?
+    end
+
+    Settlement.create(hash)
+   end
 
   index do
     selectable_column
     #column :no
+    column :package
     column :municipio
-    column :nombre
-    column :apellido_paterno
-    column :apellido_materno
+    column('Beneficiario', &:owner_full_name)
     column 'GPS' do |settlement|
       if settlement.geo_x.present? && settlement.geo_y.present?
         "(#{settlement.geo_x}, #{settlement.geo_y})"

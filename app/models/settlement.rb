@@ -15,7 +15,12 @@ class Settlement < ActiveRecord::Base
   }, on: :create
   fuzzily_searchable :owner_name
 
-  before_create :sign_contract
+  before_create :sign_contract, if: proc { |settlement| settlement.package.present? }
+
+  validates :nombre,           presence: true
+  validates :apellido_paterno, presence: true
+  validates :apellido_materno, presence: true
+  validates :town,             presence: true
 
   def as_json(options = {})
     super(methods: :items).merge({
@@ -63,18 +68,20 @@ class Settlement < ActiveRecord::Base
   end
 
   def constructor=(value)
+    return if value.blank?
+
     @company = Company.find_or_create_by(name: value)
   end
 
   def licitacion=(value)
     return if value.blank?
 
-    contract = Contract.find_or_create_by(name: value)
-    self.package = contract.package
+    @contract = Contract.find_or_create_by(name: value)
+    self.package = @contract.package
   end
 
   def sign_contract
-    package.contracts.first.update_attribute :company, @company
+    @contract.update_attribute :company, @company
   end
 
   def items
