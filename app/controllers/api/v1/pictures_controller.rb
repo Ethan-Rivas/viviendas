@@ -3,7 +3,7 @@ class Api::V1::PicturesController < ApiController
   before_filter :find_settlement
 
   def create
-    picture = @settlement.pictures.create(image: params[:image])
+    picture = @settlement.pictures.create(image: params[:bilddatei])
     render text: picture.image.url
   end
 
