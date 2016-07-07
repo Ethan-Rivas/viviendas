@@ -114,6 +114,7 @@ ActiveAdmin.register Settlement do
       row :cruzamientos
       row :geo_x
       row :geo_y
+
       row 'Progreso' do |settlement|
         ul do
           ProgressCheck.all.each do |item|
@@ -123,6 +124,17 @@ ActiveAdmin.register Settlement do
               end
 
               strong "#{settlement.progress_for(item)}%"
+            end
+          end
+        end
+      end
+
+      row 'Fotografías' do |settlement|
+        ul do
+          settlement.pictures.order(:created_at).each do |picture|
+            li do
+              img(src: picture.image.url)
+              div I18n.l picture.created_at
             end
           end
         end
