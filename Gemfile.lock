@@ -17,6 +17,13 @@ GIT
       sass-rails
       sprockets (< 4)
 
+GIT
+  remote: https://github.com/Ethan-Rivas/active_admin_importable
+  revision: e2a0b5271c67d4c2bd2439777614ccd2f3fba6e8
+  ref: spanish
+  specs:
+    active_admin_importable (1.1.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -39,7 +46,6 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
-    active_admin_importable (1.1.2)
     activejob (4.2.6)
       activesupport (= 4.2.6)
       globalid (>= 0.3.0)
@@ -262,7 +268,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_admin_importable
+  active_admin_importable!
   activeadmin!
   awesome_print
   aws-sdk (< 2.0)
