@@ -19,8 +19,8 @@ GIT
 
 GIT
   remote: https://github.com/Ethan-Rivas/active_admin_importable
-  revision: 73effc55fb6f3b712550b48c61db6e48126894bd
-  ref: master
+  revision: e2a0b5271c67d4c2bd2439777614ccd2f3fba6e8
+  ref: spanish
   specs:
     active_admin_importable (1.1.2)
 
