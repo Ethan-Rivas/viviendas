@@ -28,7 +28,7 @@ gem 'activeadmin', github: 'activeadmin'
 # Use paperclio for add images
 gem "paperclip", "~> 4.2"
 # Load files to active admin
-gem 'active_admin_importable'
+gem 'active_admin_importable', :git => 'https://github.com/Ethan-Rivas/active_admin_importable', :ref => 'master'
 # Token for manage authentications
 gem 'devise_token_auth'
 # RestClient
