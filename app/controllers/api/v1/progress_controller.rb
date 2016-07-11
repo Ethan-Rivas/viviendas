@@ -5,12 +5,12 @@ class Api::V1::ProgressController < ApiController
   def update
     progress = @settlement.progress_inputs.find_or_create_by(progress_check_id: params[:id])
 
-    progress.update_attribute(:progress, params[:progress])
+    progress.update_attributes(progress: params[:progress])
 
-    if @settlement.valid?
+    if progress.valid?
       render json: @settlement, status: :ok
     else
-      render json: { errors: @settlement.errors}, status: :unprocessable_entity
+      render json: { errors: progress.errors}, status: :unprocessable_entity
     end
   end
 
