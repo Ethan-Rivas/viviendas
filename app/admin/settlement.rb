@@ -10,7 +10,26 @@ ActiveAdmin.register Settlement do
     end
 
     Settlement.create(hash)
-   end
+  end
+
+  csv do
+    column('NO', humanize_name: false) { |settlement| settlement.no }
+    column('MUNICIPIO', humanize_name: false) { |settlement| settlement.municipio }
+    column('A PATERNO', humanize_name: false) { |settlement| settlement.apellido_paterno }
+    column('A MATERNO', humanize_name: false) { |settlement| settlement.apellido_materno }
+    column('CURP', humanize_name: false) { |settlement| settlement.curp }
+    column('CUIS', humanize_name: false) { |settlement| settlement.cuis }
+    column('CP', humanize_name: false) { |settlement| settlement.cp }
+    column('COLONIA', humanize_name: false) { |settlement| settlement.colonia }
+    column('LOCALIDAD', humanize_name: false) { |settlement| settlement.localidad }
+    column('CALLE', humanize_name: false) { |settlement| settlement.calle }
+    column('NUMERO', humanize_name: false) { |settlement| settlement.telefono }
+    column('CRUZAMIENTOS', humanize_name: false) { |settlement| settlement.cruzamientos }
+    column('LATITUD', humanize_name: false) { |settlement| settlement.geo_x }
+    column('LONGITUD', humanize_name: false) { |settlement| settlement.geo_y }
+    column('CONSTRUCTOR', humanize_name: false) { |settlement| settlement.constructor }
+    column('LICITACION', humanize_name: false) { |settlement| settlement.licitacion }
+  end
 
   index do
     selectable_column

@@ -39,3 +39,20 @@
 #header ul.tabs > li:hover > a {
   background: #3d3d3d;
 }
+
+.ivey-logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+}
+
+form .actions input[type="submit"]{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+form .field input[type="email"], form .field input[type="password"] {
+  width: 95%;
+}

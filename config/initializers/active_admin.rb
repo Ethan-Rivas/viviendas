@@ -16,7 +16,7 @@ ActiveAdmin.setup do |config|
   #
   # Note: Aim for an image that's 21px high so it fits in the header.
   #
-  config.site_title_image = "http://i.imgur.com/GG8JE6b.png"
+  config.site_title_image = "logo_head.png"
 
   # == Default Namespace
   #
@@ -157,7 +157,7 @@ ActiveAdmin.setup do |config|
 
   # == Setting a Favicon
   #
-  config.favicon = 'http://i.imgur.com/GG8JE6b.png'
+  config.favicon = 'logo_head.png'
 
   # == Meta Tags
   #
