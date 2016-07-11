@@ -5,6 +5,10 @@ class Settlement < ActiveRecord::Base
   has_many :pictures
   belongs_to :package
   has_many :contracts, through: :package
+  has_many :companies, through: :contracts
+  def company
+    companies.first
+  end
 
   belongs_to :town
   delegate :name, to: :town, prefix: true, allow_nil: true
@@ -73,11 +77,21 @@ class Settlement < ActiveRecord::Base
     @company = Company.find_or_create_by(name: value)
   end
 
+  def constructor
+    company && company.name
+  end
+
   def licitacion=(value)
     return if value.blank?
 
     @contract = Contract.find_or_create_by(name: value)
     self.package = @contract.package
+  end
+
+  def licitacion
+    return if contracts.empty?
+
+    contracts.first.name
   end
 
   def sign_contract
