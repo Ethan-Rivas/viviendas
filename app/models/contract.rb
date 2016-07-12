@@ -17,7 +17,7 @@ private
 
   def generate_device
     users.create({
-      email: "#{name.split('-')[-2..-1].join('-')}@codigo.jade",
+      email: "#{name.split('-')[-2..-1].join('-').strip}@codigo.jade",
       code: rand(36**6).to_s(36).upcase
     })
   end
