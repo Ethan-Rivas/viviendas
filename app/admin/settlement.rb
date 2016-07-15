@@ -9,6 +9,19 @@ ActiveAdmin.register Settlement do
       hash[key] = value.encode('UTF-8', 'Windows-1252') unless value.blank?
     end
 
+    if hash[:municipio].present?
+      town = Town.find_or_create_by(name: hash[:municipio])
+
+      if hash[:localidad].present?
+        location = Location.find_or_create_by(name: hash[:localidad], town_id: town.id)
+
+        if hash[:licitacion].present?
+          contract = Contract.find_or_create_by(name: hash[:licitacion])
+          LocationContract.find_or_create_by(location_id: location.id, contract_id: contract.id)
+        end
+      end
+    end
+
     Settlement.create(hash)
   end
 
@@ -36,6 +49,7 @@ ActiveAdmin.register Settlement do
     #column :no
     column :package
     column :municipio
+    column :localidad
     column('Beneficiario', &:owner_full_name)
     column 'GPS' do |settlement|
       if settlement.geo_x.present? && settlement.geo_y.present?

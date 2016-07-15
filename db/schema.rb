@@ -11,187 +11,198 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160707034356) do
+ActiveRecord::Schema.define(version: 20160715180204) do
 
   create_table "active_admin_comments", force: :cascade do |t|
-    t.string   "namespace"
-    t.text     "body"
-    t.string   "resource_id",   null: false
-    t.string   "resource_type", null: false
-    t.integer  "author_id"
-    t.string   "author_type"
+    t.string   "namespace",     limit: 255
+    t.text     "body",          limit: 65535
+    t.string   "resource_id",   limit: 255,   null: false
+    t.string   "resource_type", limit: 255,   null: false
+    t.integer  "author_id",     limit: 4
+    t.string   "author_type",   limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
-  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
-  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
+  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
+  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
   create_table "admin_users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
   end
 
-  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
-  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
+  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "companies", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "name"
-    t.string   "rfc"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "name",       limit: 255
+    t.string   "rfc",        limit: 255
   end
 
   create_table "contracts", force: :cascade do |t|
-    t.string  "name"
-    t.integer "company_id"
-    t.integer "package_id"
+    t.string  "name",       limit: 255
+    t.integer "company_id", limit: 4
+    t.integer "package_id", limit: 4
   end
 
   create_table "kml_files", force: :cascade do |t|
-    t.string   "upload_file_name"
-    t.string   "upload_content_type"
-    t.integer  "upload_file_size"
+    t.string   "upload_file_name",    limit: 255
+    t.string   "upload_content_type", limit: 255
+    t.integer  "upload_file_size",    limit: 4
     t.datetime "upload_updated_at"
-    t.integer  "town_id"
+    t.integer  "town_id",             limit: 4
   end
 
   create_table "kml_options", force: :cascade do |t|
-    t.integer "kml_settlement_id"
-    t.integer "settlement_id"
-    t.integer "rank"
+    t.integer "kml_settlement_id", limit: 4
+    t.integer "settlement_id",     limit: 4
+    t.integer "rank",              limit: 4
   end
 
   create_table "kml_settlements", force: :cascade do |t|
-    t.string  "name"
-    t.float   "geo_x"
-    t.float   "geo_y"
-    t.integer "settlement_id"
-    t.integer "kml_file_id"
+    t.string  "name",          limit: 255
+    t.float   "geo_x",         limit: 24
+    t.float   "geo_y",         limit: 24
+    t.integer "settlement_id", limit: 4
+    t.integer "kml_file_id",   limit: 4
   end
 
-  add_index "kml_settlements", ["kml_file_id"], name: "index_kml_settlements_on_kml_file_id"
+  add_index "kml_settlements", ["kml_file_id"], name: "index_kml_settlements_on_kml_file_id", using: :btree
+
+  create_table "location_contracts", force: :cascade do |t|
+    t.integer "location_id", limit: 4
+    t.integer "contract_id", limit: 4
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string  "name",    limit: 255
+    t.integer "town_id", limit: 4
+  end
 
   create_table "packages", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "name"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "name",       limit: 255
   end
 
   create_table "pictures", force: :cascade do |t|
-    t.string   "title"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
+    t.string   "title",              limit: 255
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
+    t.integer  "image_file_size",    limit: 4
     t.datetime "image_updated_at"
-    t.integer  "settlement_id"
+    t.integer  "settlement_id",      limit: 4
   end
 
   create_table "progress_checks", force: :cascade do |t|
-    t.string  "name"
-    t.integer "value"
+    t.string  "name",  limit: 255
+    t.integer "value", limit: 4
   end
 
   create_table "progress_inputs", force: :cascade do |t|
-    t.integer  "progress_check_id"
-    t.integer  "settlement_id"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.integer  "progress",          default: 0
+    t.integer  "progress_check_id", limit: 4
+    t.integer  "settlement_id",     limit: 4
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.integer  "progress",          limit: 4, default: 0
   end
 
   create_table "settlements", force: :cascade do |t|
-    t.string  "owner_name"
-    t.string  "address"
-    t.float   "geo_x"
-    t.float   "geo_y"
-    t.integer "no"
-    t.string  "municipio"
-    t.string  "nombre"
-    t.string  "apellido_paterno"
-    t.string  "apellido_materno"
-    t.string  "curp"
-    t.string  "telefono"
+    t.string  "owner_name",       limit: 255
+    t.string  "address",          limit: 255
+    t.float   "geo_x",            limit: 24
+    t.float   "geo_y",            limit: 24
+    t.integer "no",               limit: 4
+    t.string  "municipio",        limit: 255
+    t.string  "nombre",           limit: 255
+    t.string  "apellido_paterno", limit: 255
+    t.string  "apellido_materno", limit: 255
+    t.string  "curp",             limit: 255
+    t.string  "telefono",         limit: 255
     t.date    "fecha_nacimiento"
-    t.string  "cp"
-    t.string  "colonia"
-    t.string  "localidad"
-    t.string  "calle"
-    t.integer "num_casa"
-    t.integer "cruzamientos"
-    t.string  "dia"
-    t.string  "mes"
-    t.string  "anio"
-    t.string  "sifode"
-    t.string  "sexo"
-    t.string  "resultado"
-    t.string  "marginacion"
-    t.string  "procedencia"
-    t.string  "procede"
-    t.string  "observacion"
-    t.integer "package_id"
-    t.integer "town_id"
+    t.string  "cp",               limit: 255
+    t.string  "colonia",          limit: 255
+    t.string  "localidad",        limit: 255
+    t.string  "calle",            limit: 255
+    t.integer "num_casa",         limit: 4
+    t.integer "cruzamientos",     limit: 4
+    t.string  "dia",              limit: 255
+    t.string  "mes",              limit: 255
+    t.string  "anio",             limit: 255
+    t.string  "sifode",           limit: 255
+    t.string  "sexo",             limit: 255
+    t.string  "resultado",        limit: 255
+    t.string  "marginacion",      limit: 255
+    t.string  "procedencia",      limit: 255
+    t.string  "procede",          limit: 255
+    t.string  "observacion",      limit: 255
+    t.integer "package_id",       limit: 4
+    t.integer "town_id",          limit: 4
     t.string  "cuis",             limit: 255
+    t.integer "location_id",      limit: 4
   end
 
   create_table "towns", force: :cascade do |t|
-    t.string "name"
+    t.string "name", limit: 255
   end
 
   create_table "trigrams", force: :cascade do |t|
     t.string  "trigram",     limit: 3
     t.integer "score",       limit: 2
-    t.integer "owner_id"
-    t.string  "owner_type"
-    t.string  "fuzzy_field"
+    t.integer "owner_id",    limit: 4
+    t.string  "owner_type",  limit: 255
+    t.string  "fuzzy_field", limit: 255
   end
 
-  add_index "trigrams", ["owner_id", "owner_type", "fuzzy_field", "trigram", "score"], name: "index_for_match"
-  add_index "trigrams", ["owner_id", "owner_type"], name: "index_by_owner"
+  add_index "trigrams", ["owner_id", "owner_type", "fuzzy_field", "trigram", "score"], name: "index_for_match", using: :btree
+  add_index "trigrams", ["owner_id", "owner_type"], name: "index_by_owner", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "provider",               default: "email", null: false
-    t.string   "uid",                    default: "",      null: false
-    t.string   "encrypted_password",     default: "",      null: false
-    t.string   "reset_password_token"
+    t.string   "provider",               limit: 255,   default: "email", null: false
+    t.string   "uid",                    limit: 255,   default: "",      null: false
+    t.string   "encrypted_password",     limit: 255,   default: "",      null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,       null: false
+    t.integer  "sign_in_count",          limit: 4,     default: 0,       null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.string   "confirmation_token"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
+    t.string   "confirmation_token",     limit: 255
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email"
-    t.string   "name"
-    t.string   "nickname"
-    t.string   "image"
-    t.string   "email"
-    t.text     "tokens"
+    t.string   "unconfirmed_email",      limit: 255
+    t.string   "name",                   limit: 255
+    t.string   "nickname",               limit: 255
+    t.string   "image",                  limit: 255
+    t.string   "email",                  limit: 255
+    t.text     "tokens",                 limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "contract_id"
-    t.string   "phone_number"
-    t.string   "code"
+    t.integer  "contract_id",            limit: 4
+    t.string   "phone_number",           limit: 255
+    t.string   "code",                   limit: 255
   end
 
-  add_index "users", ["email"], name: "index_users_on_email"
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  add_index "users", ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true, using: :btree
 
 end
