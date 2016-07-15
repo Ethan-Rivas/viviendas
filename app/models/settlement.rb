@@ -14,6 +14,10 @@ class Settlement < ActiveRecord::Base
   delegate :name, to: :town, prefix: true, allow_nil: true
   alias_method :municipio, :town_name
 
+  belongs_to :location
+  delegate :name, to: :location, prefix: true, allow_nil: true
+  alias_method :localidad, :location_name
+
   before_validation Proc.new { |settlement|
     settlement.owner_name = I18n.transliterate(owner_full_name)
   }, on: :create
@@ -35,6 +39,10 @@ class Settlement < ActiveRecord::Base
 
   def municipio=(name)
     self.town = Town.find_or_create_by({ name: name })
+  end
+
+  def localidad=(name)
+    self.location = Location.find_or_create_by({ name: name })
   end
 
   def contract_name=(name)

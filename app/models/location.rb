@@ -1,6 +1,6 @@
-class Town < ActiveRecord::Base
+class Location < ActiveRecord::Base
   has_many :settlements
-  has_many :locations
+  belongs_to :town
 
   validates :name, presence: true
 end
