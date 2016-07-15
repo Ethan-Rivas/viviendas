@@ -55,6 +55,13 @@ class Settlement < ActiveRecord::Base
     end.sum
   end
 
+  def self.progress
+    settlements = self.all
+    return 0 if settlements.empty?
+
+    settlements.map(&:progress).sum / settlements.count
+  end
+
   def owner_full_name
     [nombre, apellido_paterno, apellido_materno].join(' ')
   end
