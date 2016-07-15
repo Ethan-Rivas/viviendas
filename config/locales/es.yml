@@ -68,6 +68,9 @@ es:
       town:
         one: 'Municipio'
         other: 'Municipios'
+      location_contract:
+        one: 'Reporte'
+        other: 'Reportes'
     attributes:
       user:
         contract: "Contrato"
@@ -110,3 +113,8 @@ es:
         name: "Nombre"
         contract: "Contrato"
         contracts: "Contratos"
+      location_contract:
+        contract: "Contrato"
+        town: "Municipio"
+        location: "Localidad"
+        company: "Constructora"
