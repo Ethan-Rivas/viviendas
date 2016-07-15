@@ -91,6 +91,8 @@ ActiveAdmin.register Settlement do
       f.input :sifode
       f.input :sexo
       f.input :resultado
+      f.input :geo_x
+      f.input :geo_y
     end
     f.actions
   end
