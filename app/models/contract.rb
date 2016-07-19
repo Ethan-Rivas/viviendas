@@ -5,7 +5,7 @@ class Contract < ActiveRecord::Base
   after_create :generate_device
   has_many :users
   belongs_to :company
-  has_many :location_contracts
+  has_many :location_contracts, dependent: :destroy
   has_many :locations, through: :location_contracts
 
   validates :name, presence: true
