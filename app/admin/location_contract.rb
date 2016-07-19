@@ -12,10 +12,14 @@ ActiveAdmin.register LocationContract do
     end
 
     column 'Suma' do |lc|
+      return 0 unless lc.contract_settlements
+
       lc.contract_settlements.count
     end
 
     column 'Ponderación Parcial' do |lc|
+      return 'No disponible' unless lc.contract_settlements
+
       total   = lc.contract_settlements.count
       partial = lc.settlements.count
       percent = partial.to_f / total
