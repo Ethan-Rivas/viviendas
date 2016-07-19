@@ -4,7 +4,12 @@ class Api::V1::PicturesController < ApiController
 
   def create
     picture = @settlement.pictures.create(image: params[:bilddatei])
-    render text: picture.image.url
+    
+    if picture.valid?
+      render json: picture
+    else
+      render json: picture.errors
+    end
   end
 
 private

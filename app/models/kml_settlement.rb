@@ -11,9 +11,15 @@ class KmlSettlement < ActiveRecord::Base
 private
 
   def generate_options
-    kml_file.town.settlements.find_by_fuzzy_owner_name(t(name)).each_with_index do |settlement, index|
+    fuzzy_options.each_with_index do |settlement, index|
       options.create(settlement: settlement, rank: index.succ)
     end
+  end
+
+  def fuzzy_options(limit = 10)
+    kml_file.town.settlements.find_by_fuzzy_owner_name(t(name), limit: limit)
+  rescue
+    fuzzy_options(limit / 2)
   end
 
   def update_settlement
