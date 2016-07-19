@@ -12,19 +12,23 @@ ActiveAdmin.register LocationContract do
     end
 
     column 'Suma' do |lc|
-      return 0 unless lc.contract_settlements
-
-      lc.contract_settlements.count
+      if lc.contract_settlements
+        lc.contract_settlements.count
+      else
+        0
+      end
     end
 
     column 'Ponderación Parcial' do |lc|
-      return 'No disponible' unless lc.contract_settlements
+      if lc.contract_settlements
+        total   = lc.contract_settlements.count
+        partial = lc.settlements.count
+        percent = partial.to_f / total
 
-      total   = lc.contract_settlements.count
-      partial = lc.settlements.count
-      percent = partial.to_f / total
-
-      "#{(percent * 100).round(2)}% - #{(percent * lc.progress).round(2)}%"
+        "#{(percent * 100).round(2)}% - #{(percent * lc.progress).round(2)}%"
+      else
+        'No Disponible'
+      end
     end
 
     column 'Suma' do |lc|
