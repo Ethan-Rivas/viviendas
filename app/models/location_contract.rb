@@ -6,7 +6,7 @@ class LocationContract < ActiveRecord::Base
   delegate :town, to: :location, allow_nil: true
 
   def settlements
-    return 0 unless location.present? && contract.present?
+    return Settlement.none unless location.present? && contract.present?
 
     contract.settlements.where(location_id: location.id)
   end
