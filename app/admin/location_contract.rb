@@ -12,11 +12,11 @@ ActiveAdmin.register LocationContract do
     end
 
     column 'Suma' do |lc|
-      lc.contract.settlements.count
+      lc.contract_settlements.count
     end
 
     column 'Ponderación Parcial' do |lc|
-      total   = lc.contract.settlements.count
+      total   = lc.contract_settlements.count
       partial = lc.settlements.count
       percent = partial.to_f / total
 
