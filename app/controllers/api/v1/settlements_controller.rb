@@ -1,9 +1,8 @@
 class Api::V1::SettlementsController < ApiController
-  before_action :authenticate_user!
   before_filter :find_settlement, only: :show
 
   def index
-    settlements = current_user.settlements
+    settlements = Settlement.first#current_user.settlements
 
     render json: settlements
   end
