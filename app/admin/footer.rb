@@ -8,6 +8,9 @@ module ActiveAdmin
 
         div do
           img(src:"http://www.ivey.yucatan.gob.mx/images/logo_sitio.jpg")
+          form(action:"descargas.html") do
+            input(type:"submit", value:"Descargas")
+          end
         end
       end
 
