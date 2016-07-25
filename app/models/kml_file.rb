@@ -10,10 +10,19 @@ class KmlFile < ActiveRecord::Base
 
   belongs_to :town
   validates :town, presence: true
+  has_many :town_settlements, through: :town, source: :settlements
 
   has_many :kml_settlements, dependent: :destroy
   after_commit :extract_settlements, on: :create
   accepts_nested_attributes_for :kml_settlements
+
+  def orphan_settlements
+    town_settlements.where.not(id: kml_settlements.pluck(:settlement_id))
+  end
+
+  def orphan_locations
+    kml_settlements.where(settlement_id: nil)
+  end
 
   def extract_settlements
     KmlParser.new(xml).parse.each do |settlement|
