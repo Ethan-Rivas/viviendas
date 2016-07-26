@@ -8,8 +8,8 @@ module ActiveAdmin
 
         div do
           img(src:"http://www.ivey.yucatan.gob.mx/images/logo_sitio.jpg")
-          form(action:"descargas.html") do
-            input(type:"submit", value:"Descargas")
+          h3 do
+            link_to('Descargas','/descargas.html')
           end
         end
       end
