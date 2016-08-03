@@ -1,20 +1,31 @@
-d3.json("/api/v1/settlements.json", function(data) {
-  var group = data;
+d3.json("/admin/settlements.json", function(settlements) {
+  var data = [], columns = [];
+  for (item in settlements[0].progress) {
+    data.push([item]);
+    columns.push(item);
+  }
 
-  console.log(data);
+  var names = $.map(settlements, function(settlement) {
+    return settlement.owner_name;
+  });
+
+  for (var i = 0; i < data.length; i++) {
+    settlements.forEach(function(settlement) {
+      data[i].push(settlement.progress[data[i][0]]);
+    });
+  }
 
   var chart = c3.generate({
     data: {
-      json: group,
       type: 'bar',
-      keys: {
-        x: 'owner_name',
-        value: ['id']
-      }
+      columns: data,
+      groups: [columns],
+      order: null
     },
     axis: {
       x: {
-        type: 'category'
+        type: 'category',
+        categories: names
       }
     }
   });
