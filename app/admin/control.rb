@@ -1,29 +1,23 @@
-ActiveAdmin.register_page "Control de Avances" do
-  content do
+ActiveAdmin.register Settlement, :as => 'Control De Avances' do
+  config.clear_action_items!
 
-    table do
-      thead do
-        tr do
-          %w[No Municipio Localidad Nombre A.Paterno A.Materno Cimentación Muros Losa Azoteas Piso Acabados Inst.Eléctrica Puerta Ventanas Pintura Avance].each &method(:th)
-        end
+  index do
+    selectable_column
+    column :no
+    column :package
+    column :municipio
+    column :localidad
+    column('Beneficiario', &:owner_full_name)
+    ProgressCheck.all.each do |item|
+      column item.name do |settlement|
+        (settlement.progress_inputs.find_by(:progress_check_id => item.id).try(:progress) || 0) / 100.0
       end
-      tbody do
-        Settlement.all.each do |settlement|
-          tr do
-            td settlement.no
-            td settlement.town.name
-            td settlement.localidad
-            td settlement.nombre
-            td settlement.apellido_paterno
-            td settlement.apellido_materno
-            ProgressCheck.all.map do |item|
-              td settlement.progress_for(item) / 100.0
-            end
-            td "#{settlement.progress}%"
-          end
-        end
+    end
+    column 'Avance' do |settlement|
+      "#{settlement.progress}%"
     end
   end
 
-  end
+  filter :progress_inputs_updated_at, label: 'Fecha de Avances', as: :date_range
+
 end

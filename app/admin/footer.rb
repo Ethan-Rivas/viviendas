@@ -8,6 +8,9 @@ module ActiveAdmin
 
         div do
           img(src:"http://www.ivey.yucatan.gob.mx/images/logo_sitio.jpg")
+          h3 do
+            link_to('Descargas','/descargas.html')
+          end
         end
       end
 
