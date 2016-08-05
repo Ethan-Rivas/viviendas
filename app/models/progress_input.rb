@@ -4,11 +4,17 @@ class ProgressInput < ActiveRecord::Base
 
   validate :only_forward
 
+  after_create :update_settlement_progress
+
 private
 
-    def only_forward
-      if self.progress < self.progress_was
-        errors.add(:progress, 'No puede reducirse el progreso.')
-      end
+  def update_settlement_progress
+    settlement.update_progress!
+  end
+
+  def only_forward
+    if self.progress < self.progress_was
+      errors.add(:progress, 'No puede reducirse el progreso.')
     end
+  end
 end

@@ -25,6 +25,12 @@ ActiveAdmin.register Settlement do
     Settlement.create(hash)
   end
 
+  controller do
+    def scoped_collection
+      Settlement.includes(:progress_inputs, :town, :package, :location)
+    end
+  end
+
   csv do
     column('NO', humanize_name: false) { |settlement| settlement.no }
     column('MUNICIPIO', humanize_name: false) { |settlement| settlement.municipio }

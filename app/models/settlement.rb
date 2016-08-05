@@ -49,7 +49,11 @@ class Settlement < ActiveRecord::Base
     self.contract_id = Contract.find_or_create_by({name: name}).id
   end
 
-  def progress
+  def update_progress!
+    update_attribute :progress, calculated_progress
+  end
+
+  def calculated_progress
     progress_inputs.all.map do |input|
       input.progress_check.value * input.progress / 100.0
     end.sum
