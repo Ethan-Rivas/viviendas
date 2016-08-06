@@ -3,6 +3,10 @@ class Company < ActiveRecord::Base
   has_many :settlements, through: :contracts
 
   def self.avg_progress
+    @avg_progress ||= avg_progress!
+  end
+
+  def self.avg_progress!
     return 0 unless any?
     all.map(&:progress).sum.to_f / count
   end
