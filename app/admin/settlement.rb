@@ -59,7 +59,7 @@ ActiveAdmin.register Settlement do
     column('Beneficiario', &:owner_full_name)
     column 'GPS' do |settlement|
       if settlement.geo_x.present? && settlement.geo_y.present?
-        "(#{settlement.geo_x}, #{settlement.geo_y})"
+        "(#{settlement.geo_y}, #{settlement.geo_x})"
       end
     end
     # column :curp
