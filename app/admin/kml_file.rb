@@ -77,6 +77,7 @@ ActiveAdmin.register KmlFile do
     column 'Descargar KML' do |kml|
       link_to('Descargar', kml.upload.url)
     end
+    actions
   end
 
   controller do
