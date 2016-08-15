@@ -1,6 +1,12 @@
 ActiveAdmin.register Company do
   permit_params :name, :rfc
 
+  controller do
+    def scoped_collection
+      Company.includes(contracts: { package: :settlements })
+    end
+  end
+
   index do
     selectable_column
     column :name
