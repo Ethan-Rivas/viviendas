@@ -24,6 +24,7 @@ class Settlement < ActiveRecord::Base
   fuzzily_searchable :owner_name
 
   before_create :sign_contract, if: proc { |settlement| settlement.package.present? }
+  after_destroy :destroy_town
 
   validates :nombre,           presence: true
   validates :apellido_paterno, presence: true
@@ -129,5 +130,11 @@ class Settlement < ActiveRecord::Base
 
   def progress_for(item)
     progress_inputs.find_or_initialize_by(progress_check_id: item.id).progress
+  end
+
+  private
+
+  def destroy_town
+    town.destroy if town.settlements.empty?
   end
 end
